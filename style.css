@@ -1,0 +1,21 @@
+
+
+
+td{
+  border: 1px solid black;
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  font-size: 30px; 
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ 
+h1{
+  text-align: center;
+}
