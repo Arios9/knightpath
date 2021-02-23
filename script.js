@@ -1,7 +1,9 @@
 let board=[];
 
-let iswhite=true;
 let table_element=document.getElementById("board");
+
+let iswhite=true;
+
 for(let i=0; i<8; i++){
     board[i]=[];
     let tr_element=document.createElement("tr");
@@ -12,10 +14,10 @@ for(let i=0; i<8; i++){
         board[i][j].startfrom=null;
         board[i][j].i=i;
         board[i][j].j=j;
-        tr_element.appendChild(board[i][j]); 
         let square_color=iswhite ? "white" : "chocolate";
         board[i][j].style.backgroundColor=square_color;
-        board[i][j].hasqueen=false;
+        tr_element.appendChild(board[i][j]); 
+
         iswhite=!iswhite;	
     }
     iswhite=!iswhite;	
