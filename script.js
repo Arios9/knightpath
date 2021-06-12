@@ -27,7 +27,7 @@ let start =board[0][0];
 let end =board[7][7];
 start.isvisited=true;
 start.innerHTML='&#9822;';
-end.style.backgroundColor="red";
+end.innerHTML='&#9816;';
 
 let depth=0;
 let deptharray=[];
