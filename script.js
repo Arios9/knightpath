@@ -23,11 +23,16 @@ for(let i=0; i<8; i++){
     iswhite=!iswhite;	
 }
 
-let start =board[0][0];
-let end =board[7][7];
-start.isvisited=true;
-start.innerHTML='&#9822;';
-end.innerHTML='&#9816;';
+let start, end;
+newPosition();
+
+function newPosition(){
+    start =board[RandomInt(8)][RandomInt(8)];
+    end =board[RandomInt(8)][RandomInt(8)];
+    start.isvisited=true;
+    start.innerHTML='&#9822;';
+    end.innerHTML='&#9816;';
+}
 
 let depth=0;
 let deptharray=[];
@@ -38,7 +43,7 @@ let move=[[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2]];
 findmoves();
 
 function findmoves(){ 
-      while(true){
+    while(true){
         deptharray[++depth]=[];
         for(let u=0; u<deptharray[depth-1].length; u++){
             let square=deptharray[depth-1][u];
@@ -52,7 +57,7 @@ function findmoves(){
                 }
             }    
         }
-      }
+    }
 }
 
 function isend(i,j){
@@ -76,3 +81,7 @@ drawpath();
 function RandomInt(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
+
+document.getElementById("newPosition").onclick = () => {
+	window.location.reload();
+};
