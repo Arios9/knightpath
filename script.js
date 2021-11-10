@@ -1,7 +1,5 @@
 let board = [];
-
 let table_element = document.getElementById("board");
-
 let iswhite = true;
 
 for (let i = 0; i < 8; i++) {
@@ -11,7 +9,7 @@ for (let i = 0; i < 8; i++) {
   for (let j = 0; j < 8; j++) {
     board[i][j] = document.createElement("td");
     board[i][j].isvisited = false;
-    board[i][j].startfrom = null;
+    board[i][j].parent = null;
     board[i][j].i = i;
     board[i][j].j = j;
     let square_color = iswhite ? "white" : "chocolate";
@@ -29,6 +27,8 @@ newPosition();
 function newPosition() {
   start = board[RandomInt(8)][RandomInt(8)];
   end = board[RandomInt(8)][RandomInt(8)];
+  //   start = board[1][1];
+  //   end = board[1][1];
   start.isvisited = true;
   start.innerHTML = "&#9822;";
   end.innerHTML = "&#9816;";
@@ -49,29 +49,23 @@ let knightMoves = [
   [-1, -2],
 ];
 
-findmoves();
+findmovess([start]);
 
-function findmoves() {
-  while (true) {
-    deptharray[++depth] = [];
-    for (let u = 0; u < deptharray[depth - 1].length; u++) {
-      let square = deptharray[depth - 1][u];
-      for (let k = 0; k < knightMoves.length; k++) {
-        let i = square.i + knightMoves[k][0],
-          j = square.j + knightMoves[k][1];
-        if (validmove(i, j) && !board[i][j].isvisited) {
-          board[i][j].isvisited = true;
-          deptharray[depth].push(board[i][j]);
-          board[i][j].startfrom = square;
-          if (isend(i, j)) return;
-        }
+function findmovess(layerNodes) {
+  if (layerNodes.includes(end)) return;
+  childNodes = [];
+  for (node of layerNodes) {
+    for (move of knightMoves) {
+      let i = node.i + move[0];
+      let j = node.j + move[1];
+      if (validmove(i, j) && !board[i][j].isvisited) {
+        board[i][j].isvisited = true;
+        childNodes.push(board[i][j]);
+        board[i][j].parent = node;
       }
     }
   }
-}
-
-function isend(i, j) {
-  return i == end.i && j == end.j;
+  findmovess(childNodes);
 }
 
 function validmove(i, j) {
@@ -80,9 +74,10 @@ function validmove(i, j) {
 
 function drawpath() {
   let temp = end;
-  while (temp.startfrom != start) {
-    temp = temp.startfrom;
-    temp.style.backgroundColor = "black";
+  while (true) {
+    if (temp == start) break;
+    if (temp != end) temp.style.backgroundColor = "black";
+    temp = temp.parent;
   }
 }
 
