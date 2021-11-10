@@ -38,7 +38,7 @@ let depth=0;
 let deptharray=[];
 deptharray[0]=[start];
 
-let move=[[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2]];
+let knightMoves=[[-2,-1],[-2,1],[-1,2],[1,2],[2,1],[2,-1],[1,-2],[-1,-2]];
 
 findmoves();
 
@@ -47,8 +47,8 @@ function findmoves(){
         deptharray[++depth]=[];
         for(let u=0; u<deptharray[depth-1].length; u++){
             let square=deptharray[depth-1][u];
-            for(let k=0; k<8; k++){
-                let i=square.i+move[k][0],j=square.j+move[k][1];
+            for(let k=0; k<knightMoves.length; k++){
+                let i=square.i+knightMoves[k][0],j=square.j+knightMoves[k][1];
                 if(validmove(i,j)&&!board[i][j].isvisited){
                     board[i][j].isvisited=true;
                     deptharray[depth].push(board[i][j]);
