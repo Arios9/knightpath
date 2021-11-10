@@ -72,7 +72,7 @@ function drawpath(){
  let temp=end;
  while(temp.startfrom!=start){
     temp=temp.startfrom;
-    temp.style.backgroundColor="green";
+    temp.style.backgroundColor="black";
 }}
 
 drawpath();
