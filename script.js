@@ -49,9 +49,9 @@ let knightMoves = [
   [-1, -2],
 ];
 
-findmovess([start]);
+findmoves([start]);
 
-function findmovess(layerNodes) {
+function findmoves(layerNodes) {
   if (layerNodes.includes(end)) return;
   childNodes = [];
   for (node of layerNodes) {
@@ -65,7 +65,7 @@ function findmovess(layerNodes) {
       }
     }
   }
-  findmovess(childNodes);
+  findmoves(childNodes);
 }
 
 function validmove(i, j) {
