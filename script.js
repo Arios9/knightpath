@@ -27,16 +27,10 @@ newPosition();
 function newPosition() {
   start = board[RandomInt(8)][RandomInt(8)];
   end = board[RandomInt(8)][RandomInt(8)];
-  //   start = board[1][1];
-  //   end = board[1][1];
   start.isvisited = true;
   start.innerHTML = "&#9822;";
   end.innerHTML = "&#9816;";
 }
-
-let depth = 0;
-let deptharray = [];
-deptharray[0] = [start];
 
 let knightMoves = [
   [-2, -1],
