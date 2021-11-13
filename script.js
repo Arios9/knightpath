@@ -1,6 +1,7 @@
 let board = [];
 let table_element = document.getElementById("board");
 let iswhite = true;
+let start, end;
 
 for (let i = 0; i < 8; i++) {
   board[i] = [];
@@ -21,15 +22,12 @@ for (let i = 0; i < 8; i++) {
   iswhite = !iswhite;
 }
 
-let start, end;
-newPosition();
+addPieces();
+findStartEnd();
 
-function newPosition() {
-  start = board[0][0];
-  end = board[7][7];
-  start.isvisited = true;
-  createPiece("black_knight", "&#9822;", start);
-  createPiece("white_knight", "&#9816;", end);
+function addPieces() {
+  createPiece("black_knight", "&#9822;", board[0][0]);
+  createPiece("white_knight", "&#9816;", board[7][7]);
 }
 
 function createPiece(id, entity, element) {
@@ -37,6 +35,12 @@ function createPiece(id, entity, element) {
   piece.setAttribute("id", id);
   piece.innerHTML = entity;
   element.appendChild(piece);
+}
+
+function findStartEnd() {
+  start = document.getElementById("black_knight").parentElement;
+  end = document.getElementById("white_knight").parentElement;
+  start.isvisited = true;
 }
 
 let knightMoves = [
