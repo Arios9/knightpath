@@ -12,29 +12,9 @@ td {
   align-items: center;
 }
 
-h1 {
+h1,
+h2 {
   text-align: center;
-}
-
-.footer {
-  position: fixed;
-  bottom: 50px;
-  width: 100%;
-  background-color: white;
-  text-align: center;
-}
-
-#newPosition {
-  background-color: blue;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
 }
 
 piece {
