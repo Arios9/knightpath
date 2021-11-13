@@ -1,5 +1,4 @@
 let board = [];
-let iswhite = true;
 let start, end;
 let knightMoves = [
   [-2, -1],
@@ -20,13 +19,10 @@ for (let i = 0; i < 8; i++) {
     board[i][j] = document.createElement("td");
     board[i][j].i = i;
     board[i][j].j = j;
-    let square_color = iswhite ? "white" : "chocolate";
+    let square_color = (i + j) % 2 == 0 ? "white" : "chocolate";
     board[i][j].style.backgroundColor = square_color;
     tr_element.appendChild(board[i][j]);
-
-    iswhite = !iswhite;
   }
-  iswhite = !iswhite;
 }
 
 addPieces();
