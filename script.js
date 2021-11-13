@@ -85,7 +85,6 @@ function drawpath() {
     if (temp != end) {
       let pathSquare = document.createElement("div");
       pathSquare.setAttribute("class", "pathSquare");
-      pathSquare.style.backgroundColor = "black";
       temp.appendChild(pathSquare);
     }
     temp = temp.parent;
