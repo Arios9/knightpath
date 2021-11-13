@@ -25,11 +25,18 @@ let start, end;
 newPosition();
 
 function newPosition() {
-  start = board[RandomInt(8)][RandomInt(8)];
-  end = board[RandomInt(8)][RandomInt(8)];
+  start = board[0][0];
+  end = board[7][7];
   start.isvisited = true;
-  start.innerHTML = "&#9822;";
-  end.innerHTML = "&#9816;";
+  createPiece("black_knight", "&#9822;", start);
+  createPiece("white_knight", "&#9816;", end);
+}
+
+function createPiece(id, entity, element) {
+  let piece = document.createElement("piece");
+  piece.setAttribute("id", id);
+  piece.innerHTML = entity;
+  element.appendChild(piece);
 }
 
 let knightMoves = [
@@ -48,8 +55,8 @@ findmoves([start]);
 function findmoves(layerNodes) {
   if (layerNodes.includes(end)) return;
   childNodes = [];
-  for (node of layerNodes) {
-    for (move of knightMoves) {
+  for (let node of layerNodes) {
+    for (let move of knightMoves) {
       let i = node.i + move[0];
       let j = node.j + move[1];
       if (validmove(i, j) && !board[i][j].isvisited) {
@@ -76,11 +83,3 @@ function drawpath() {
 }
 
 drawpath();
-
-function RandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-document.getElementById("newPosition").onclick = () => {
-  window.location.reload();
-};

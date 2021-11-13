@@ -13,7 +13,13 @@ function drop(ev) {
 }
 
 let tds = document.getElementsByTagName("td");
-tds.setAttribute("ondrop", "drop(event)");
-tds.setAttribute("ondragover", "allowDrop(event)");
+for (let td of tds) {
+  td.setAttribute("ondrop", "drop(event)");
+  td.setAttribute("ondragover", "allowDrop(event)");
+}
 
-console.log(tds.length);
+let pieces = document.querySelectorAll("piece");
+for (let piece of pieces) {
+  piece.setAttribute("draggable", "true");
+  piece.setAttribute("ondragstart", "drag(event)");
+}
