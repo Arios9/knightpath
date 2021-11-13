@@ -2,6 +2,16 @@ let board = [];
 let table_element = document.getElementById("board");
 let iswhite = true;
 let start, end;
+let knightMoves = [
+  [-2, -1],
+  [-2, 1],
+  [-1, 2],
+  [1, 2],
+  [2, 1],
+  [2, -1],
+  [1, -2],
+  [-1, -2],
+];
 
 for (let i = 0; i < 8; i++) {
   board[i] = [];
@@ -23,7 +33,7 @@ for (let i = 0; i < 8; i++) {
 }
 
 addPieces();
-findStartEnd();
+findpath();
 
 function addPieces() {
   createPiece("black_knight", "&#9822;", board[0][0]);
@@ -37,24 +47,12 @@ function createPiece(id, entity, element) {
   element.appendChild(piece);
 }
 
-function findStartEnd() {
+function findpath() {
   start = document.getElementById("black_knight").parentElement;
   end = document.getElementById("white_knight").parentElement;
   start.isvisited = true;
+  findmoves([start]);
 }
-
-let knightMoves = [
-  [-2, -1],
-  [-2, 1],
-  [-1, 2],
-  [1, 2],
-  [2, 1],
-  [2, -1],
-  [1, -2],
-  [-1, -2],
-];
-
-findmoves([start]);
 
 function findmoves(layerNodes) {
   if (layerNodes.includes(end)) return;
