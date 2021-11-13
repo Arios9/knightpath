@@ -40,3 +40,8 @@ h1 {
 piece {
   cursor: pointer;
 }
+
+.pathSquare {
+  width: 100%;
+  height: 100%;
+}
