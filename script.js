@@ -19,8 +19,6 @@ for (let i = 0; i < 8; i++) {
   table_element.appendChild(tr_element);
   for (let j = 0; j < 8; j++) {
     board[i][j] = document.createElement("td");
-    board[i][j].isvisited = false;
-    board[i][j].parent = null;
     board[i][j].i = i;
     board[i][j].j = j;
     let square_color = iswhite ? "white" : "chocolate";
@@ -52,6 +50,16 @@ function findpath() {
   end = document.getElementById("white_knight").parentElement;
   start.isvisited = true;
   findmoves([start]);
+}
+
+function clearBoard() {
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
+      board[i][j].isvisited = false;
+      board[i][j].parent = null;
+    }
+  }
+  $(".pathSquare").remove();
 }
 
 function findmoves(layerNodes) {

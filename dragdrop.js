@@ -4,12 +4,15 @@ function allowDrop(ev) {
 
 function drag(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+  clearBoard();
 }
 
 function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
+  findpath();
+  drawpath();
 }
 
 let tds = document.getElementsByTagName("td");
