@@ -27,6 +27,7 @@ for (let i = 0; i < 8; i++) {
 
 addPieces();
 findpath();
+drawpath();
 
 function addPieces() {
   createPiece("black_knight", "&#9822;", board[0][0]);
@@ -90,5 +91,3 @@ function drawpath() {
     temp = temp.parent;
   }
 }
-
-drawpath();
