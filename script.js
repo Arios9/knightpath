@@ -13,7 +13,7 @@ let knightMoves = [
 
 for (let i = 0; i < 8; i++) {
   board[i] = [];
-  let tr_element = document.createElement("tr");
+  let tr_element = $("<tr></tr>");
   $("#board").append(tr_element);
   for (let j = 0; j < 8; j++) {
     board[i][j] = document.createElement("td");
@@ -21,7 +21,7 @@ for (let i = 0; i < 8; i++) {
     board[i][j].j = j;
     let square_color = (i + j) % 2 == 0 ? "white" : "chocolate";
     board[i][j].style.backgroundColor = square_color;
-    tr_element.appendChild(board[i][j]);
+    tr_element.append(board[i][j]);
   }
 }
 
