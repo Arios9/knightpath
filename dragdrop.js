@@ -15,14 +15,12 @@ function drop(ev) {
   drawpath();
 }
 
-let tds = document.getElementsByTagName("td");
-for (let td of tds) {
-  td.setAttribute("ondrop", "drop(event)");
-  td.setAttribute("ondragover", "allowDrop(event)");
-}
+$("td").attr({
+  ondrop: "drop(event)",
+  ondragover: "allowDrop(event)",
+});
 
-let pieces = document.querySelectorAll("piece");
-for (let piece of pieces) {
-  piece.setAttribute("draggable", "true");
-  piece.setAttribute("ondragstart", "drag(event)");
-}
+$("piece").attr({
+  draggable: "true",
+  ondragstart: "drag(event)",
+});
