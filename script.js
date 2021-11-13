@@ -1,5 +1,4 @@
 let board = [];
-let table_element = document.getElementById("board");
 let iswhite = true;
 let start, end;
 let knightMoves = [
@@ -16,7 +15,7 @@ let knightMoves = [
 for (let i = 0; i < 8; i++) {
   board[i] = [];
   let tr_element = document.createElement("tr");
-  table_element.appendChild(tr_element);
+  $("#board").append(tr_element);
   for (let j = 0; j < 8; j++) {
     board[i][j] = document.createElement("td");
     board[i][j].i = i;
